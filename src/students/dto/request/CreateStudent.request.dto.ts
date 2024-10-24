@@ -14,3 +14,10 @@ export class CreateStudentRequestDTO {
     @IsNumber({}, { message: getValidationMessage(DtoPrefix.IDENTITY_NUMBER, ValidationType.MUST_BE_NUMBER) })
     identityNumber: number;
 }
+//Okul yönetim projesi
+//Personel
+//Öğrenciler
+//Veliler
+//Dersler
+//Notlar
+//Sınıflar
