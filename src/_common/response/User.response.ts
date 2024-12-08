@@ -1,4 +1,7 @@
-export class UserResponse extends EmployeResponsee {
+export  class UserResponse {
+    id: number;
     name: string;
     lastname: string;
+    email: string;
+    phone: string;
 }

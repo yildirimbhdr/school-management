@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseConfig } from './_common/config';
 import { ParentModule } from './parent/parent.module';
+import { ManagerModule } from './manager/manager.module';
 
 @Module({
   imports: [StudentsModule, AuthModule,
@@ -23,6 +24,7 @@ import { ParentModule } from './parent/parent.module';
       inject: [ConfigService],
     }),
     ParentModule,
+    ManagerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
