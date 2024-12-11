@@ -1,5 +1,6 @@
 export enum UserTypes {
     PARENT = 'parent',
     MANAGER = 'manager',
-    STUDENT = 'student'
+    STUDENT = 'student',
+    ADMIN = 'admin'
 }

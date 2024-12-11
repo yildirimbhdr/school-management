@@ -1,4 +1,4 @@
-import { BadGatewayException, Body, Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
+import { BadGatewayException, Body, Controller, Get, Inject, Post, Req, Res, SetMetadata, UseGuards } from '@nestjs/common';
 import { LoginRequestDTO } from './dto/request/LoginRequest.dto';
 import { Response } from 'express';
 import { LoginResponse, LoginResponseDTO } from './dto/response/Login.response.dto';
@@ -11,6 +11,7 @@ import { RegisterResponseDTO } from './dto/response/Register.response.dto';
 import { ParentMapper } from 'src/_common/mapper/Parent.mapper';
 import { Manager, Parent } from 'src/_common/typeorm';
 import { ManagerMapper } from 'src/_common/mapper/Manager.mapper';
+import { RolesGuard } from 'src/_common/guard/roles.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -43,17 +44,26 @@ export class AuthController {
         }
     }
     @Get('token')
-    getToken(@Req() req:Request){
+    getToken(@Req() req: Request) {
         return req.headers['authorization'];
     }
 
-    
+
 
     @Post('logout')
     logout() { }
 
     @Post('refresh-token')
     refreshToken() { }
+
+
+    @Get('guard')
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', [UserTypes.PARENT , UserTypes.MANAGER])
+    guard(@Req() req: any) {
+        console.log(req.user);
+        return "Success";
+    }
 
 
 
